@@ -1,0 +1,6 @@
+i2c_soft_cfg.pbi: C:\Lop\ hoc\ lap\ trinh\ nhung\i2c\i2c_soft_cfg.c \
+  C:\Lop\ hoc\ lap\ trinh\ nhung\i2c/i2c_soft_cfg.h \
+  C:\Lop\ hoc\ lap\ trinh\ nhung\i2c/delay.h \
+  C:\Lop\ hoc\ lap\ trinh\ nhung\i2c/std_type.h \
+  C:\Program\ Files\ (x86)\IAR\ Systems\Embedded\ Workbench\ 8.3\stm8\inc\iostm8s005k6.h \
+  C:\Program\ Files\ (x86)\IAR\ Systems\Embedded\ Workbench\ 8.3\stm8\inc/io_macros.h

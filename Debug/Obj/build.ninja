@@ -1,0 +1,38 @@
+#Generating source browse information for project bappe
+
+
+#Abbreviations
+cc = C$:\Program$ Files$ (x86)\IAR$ Systems\Embedded$ Workbench$ 8.3\common\bin\SourceIndexer.exe
+ll = C$:\Program$ Files$ (x86)\IAR$ Systems\Embedded$ Workbench$ 8.3\common\bin\PbdLink.exe
+bd = C$:\Program$ Files$ (x86)\IAR$ Systems\Embedded$ Workbench$ 8.3\common\bin\makeBrowseData.exe
+
+
+
+#Rules
+rule index
+  depfile = $out.dep
+  command = $cc -out=$out -f $in
+rule link
+  command = $ll -M $out $in
+rule browsedata
+  command = $bd $in -output  $out
+
+
+
+#Build steps
+build clock.pbi : index clock.xcl
+build delay.pbi : index delay.xcl
+build DS3231.pbi : index DS3231.xcl
+build gpio.pbi : index gpio.xcl
+build i2c_soft_cfg.pbi : index i2c_soft_cfg.xcl
+build i2c_soft.pbi : index i2c_soft.xcl
+build sspi_cfg.pbi : index sspi_cfg.xcl
+build sspi.pbi : index sspi.xcl
+build main.pbi : index main.xcl
+build bappe_part0.pbi : link clock.pbi delay.pbi DS3231.pbi
+build bappe_part1.pbi : link gpio.pbi i2c_soft_cfg.pbi i2c_soft.pbi
+build bappe_part2.pbi : link sspi_cfg.pbi sspi.pbi main.pbi
+build bappe.pbd : link bappe_part0.pbi bappe_part1.pbi bappe_part2.pbi
+build bappe.pbw : browsedata bappe.pbd
+
+
